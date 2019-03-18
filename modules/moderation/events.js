@@ -5,7 +5,7 @@ module.exports = {
     async ready (client, db, moduleName) {
       client.guilds.each(async guild => {
         let log = (await guild.fetchAuditLogs({ limit: 1, type: 72 })).entries.first()
-        lastID[guild.id] = log.id
+        lastID[guild.id] = log.id || undefined
       })
 
       // client.channels.find(c => c.name === 'admin').send('Killer of wonder has restarted!')
